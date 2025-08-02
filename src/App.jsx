@@ -4,6 +4,8 @@ import FocusTimer from "./components/FocusTimer";
 import DailyGoals from "./components/DailyGoals";
 import MindsetQuote from "./components/MindsetQuote";
 import ReflectionJournal from "./components/ReflectionJournal";
+import DailyQuote from "./components/DailyQuote";
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
 
       <main style={styles.mainContent}>
         <MoodTracker />
+        <DailyQuote />
         <FocusTimer />
         <DailyGoals />
         <MindsetQuote />
