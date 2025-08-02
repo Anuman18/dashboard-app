@@ -1,37 +1,51 @@
 import React from "react";
+import MoodTracker from "./components/MoodTracker";
+import FocusTimer from "./components/FocusTimer";
+import DailyGoals from "./components/DailyGoals";
+import MindsetQuote from "./components/MindsetQuote";
+import ReflectionJournal from "./components/ReflectionJournal";
 
 function App() {
   return (
-    <div className="app-container" style={styles.appContainer}>
+    <div style={styles.container}>
       <header style={styles.header}>
-        <h1 style={styles.heading}>Legend’s Dashboard</h1>
+        <h1 style={styles.title}>Legend's Dashboard</h1>
+        <p style={styles.subtitle}>Track your mindset, goals, and focus daily.</p>
       </header>
 
       <main style={styles.mainContent}>
-        <p>Welcome to your daily productivity and mindset tracker.</p>
+        <MoodTracker />
+        <FocusTimer />
+        <DailyGoals />
+        <MindsetQuote />
+        <ReflectionJournal />
       </main>
     </div>
   );
 }
 
 const styles = {
-  appContainer: {
+  container: {
     fontFamily: "sans-serif",
+    backgroundColor: "#f5f5f5",
     minHeight: "100vh",
-    backgroundColor: "#f0f2f5",
+    padding: "1rem",
   },
   header: {
-    padding: "1rem",
-    backgroundColor: "#1f2937",
-    color: "white",
     textAlign: "center",
+    marginBottom: "2rem",
   },
-  heading: {
+  title: {
+    fontSize: "2rem",
     margin: 0,
-    fontSize: "1.8rem",
+  },
+  subtitle: {
+    color: "#666",
+    marginTop: "0.5rem",
   },
   mainContent: {
-    padding: "2rem",
+    maxWidth: "600px",
+    margin: "0 auto",
   },
 };
 
