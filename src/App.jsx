@@ -5,6 +5,8 @@ import DailyGoals from "./components/DailyGoals";
 import MindsetQuote from "./components/MindsetQuote";
 import ReflectionJournal from "./components/ReflectionJournal";
 import DailyQuote from "./components/DailyQuote";
+import DailyGoals from "./components/DailyGoals";
+
 
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
         <DailyQuote />
         <FocusTimer />
         <DailyGoals />
+        <DailyQuote />
         <MindsetQuote />
         <ReflectionJournal />
       </main>
