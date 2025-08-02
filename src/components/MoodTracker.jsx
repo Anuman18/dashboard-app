@@ -1,46 +1,39 @@
 import React, { useState } from "react";
 
-const moods = [
-  { emoji: "😄", label: "Happy" },
-  { emoji: "😐", label: "Neutral" },
-  { emoji: "😞", label: "Sad" },
-  { emoji: "😡", label: "Angry" },
-  { emoji: "😌", label: "Calm" },
-];
-
 function MoodTracker() {
   const [selectedMood, setSelectedMood] = useState(null);
+  const moods = [
+    { emoji: "😄", label: "Happy" },
+    { emoji: "😐", label: "Neutral" },
+    { emoji: "😞", label: "Sad" },
+  ];
 
-  const handleMoodSelect = (mood) => {
-    setSelectedMood(mood);
+  const selectMood = (index) => {
+    setSelectedMood(index);
   };
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.heading}>How are you feeling today?</h2>
-      <div style={styles.moodGrid}>
-        {moods.map((mood) => (
+      <h3 style={styles.heading}>📊 Mood Tracker</h3>
+      <div style={styles.moodRow}>
+        {moods.map((mood, index) => (
           <button
-            key={mood.label}
-            onClick={() => handleMoodSelect(mood)}
+            key={index}
+            onClick={() => selectMood(index)}
             style={{
               ...styles.moodButton,
-              backgroundColor:
-                selectedMood?.label === mood.label ? "#e0f7fa" : "#fff",
-              border:
-                selectedMood?.label === mood.label
-                  ? "2px solid #00acc1"
-                  : "1px solid #ccc",
+              backgroundColor: selectedMood === index ? "#fde68a" : "#fff",
             }}
           >
             <span style={styles.emoji}>{mood.emoji}</span>
-            <span>{mood.label}</span>
+            <span style={styles.label}>{mood.label}</span>
           </button>
         ))}
       </div>
-
-      {selectedMood && (
-        <p style={styles.selected}>You feel <strong>{selectedMood.label}</strong> today!</p>
+      {selectedMood !== null && (
+        <p style={styles.selectedText}>
+          You’re feeling: <strong>{moods[selectedMood].label}</strong>
+        </p>
       )}
     </div>
   );
@@ -48,39 +41,43 @@ function MoodTracker() {
 
 const styles = {
   container: {
-    background: "#fff",
+    background: "#fefce8",
     padding: "1rem",
     borderRadius: "12px",
-    boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-    marginBottom: "2rem",
+    marginBottom: "1.5rem",
   },
   heading: {
-    fontSize: "1.25rem",
+    fontSize: "1.2rem",
     marginBottom: "1rem",
+    color: "#ca8a04",
   },
-  moodGrid: {
+  moodRow: {
     display: "flex",
-    gap: "0.75rem",
-    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
   moodButton: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "0.5rem",
-    width: "70px",
-    height: "70px",
-    borderRadius: "10px",
+    flex: 1,
+    margin: "0 0.5rem",
+    padding: "0.75rem",
+    border: "1px solid #e5e7eb",
+    borderRadius: "8px",
     cursor: "pointer",
-    fontSize: "0.875rem",
-    transition: "all 0.2s",
+    textAlign: "center",
+    transition: "0.3s",
   },
   emoji: {
     fontSize: "1.5rem",
+    display: "block",
   },
-  selected: {
+  label: {
+    fontSize: "0.9rem",
+    marginTop: "0.25rem",
+    color: "#374151",
+  },
+  selectedText: {
     marginTop: "1rem",
-    color: "#00796b",
+    fontSize: "1rem",
+    color: "#78350f",
   },
 };
 
