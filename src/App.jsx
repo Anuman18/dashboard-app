@@ -7,6 +7,8 @@ import ReflectionJournal from "./components/ReflectionJournal";
 import DailyQuote from "./components/DailyQuote";
 import DailyGoals from "./components/DailyGoals";
 import MiniJournal from "./components/MiniJournal";
+import HabitsTracker from "./components/HabitsTracker";
+
 
 
 
@@ -26,6 +28,7 @@ function App() {
         <DailyGoals />
         <DailyQuote />
         <MiniJournal />
+        <HabitsTracker />
         <MindsetQuote />
         <ReflectionJournal />
       </main>
