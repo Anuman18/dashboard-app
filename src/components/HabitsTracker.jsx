@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AnalyticsPanel from "./AnalyticsPanel";
 
 function HabitsTracker() {
   const initialHabits = [
@@ -19,33 +20,44 @@ function HabitsTracker() {
   };
 
   return (
-    <div style={styles.container}>
-      <h3 style={styles.heading}>✅ Daily Habits</h3>
-      <ul style={styles.list}>
-        {habits.map((habit) => (
-          <li key={habit.id} style={styles.item}>
-            <input
-              type="checkbox"
-              checked={habit.checked}
-              onChange={() => toggleHabit(habit.id)}
-              style={styles.checkbox}
-            />
-            <span style={{ ...styles.label, textDecoration: habit.checked ? "line-through" : "none" }}>
-              {habit.label}
-            </span>
-          </li>
-        ))}
-      </ul>
+    <div style={styles.wrapper}>
+      <AnalyticsPanel habits={habits} />
+
+      <div style={styles.container}>
+        <h3 style={styles.heading}>✅ Daily Habits</h3>
+        <ul style={styles.list}>
+          {habits.map((habit) => (
+            <li key={habit.id} style={styles.item}>
+              <input
+                type="checkbox"
+                checked={habit.checked}
+                onChange={() => toggleHabit(habit.id)}
+                style={styles.checkbox}
+              />
+              <span
+                style={{
+                  ...styles.label,
+                  textDecoration: habit.checked ? "line-through" : "none",
+                }}
+              >
+                {habit.label}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
 
 const styles = {
+  wrapper: {
+    marginBottom: "1.5rem",
+  },
   container: {
     background: "#fef3c7",
     padding: "1rem",
     borderRadius: "12px",
-    marginBottom: "1.5rem",
   },
   heading: {
     fontSize: "1.2rem",
